@@ -20,3 +20,4 @@ document.addEventListener('DOMContentLoaded',function(){
      f.outerHTML='<div class="thanks"><strong>'+msg+'</strong></div>';
    }});
  });
+});
