@@ -2,7 +2,8 @@
 document.addEventListener('DOMContentLoaded',function(){
  var b=document.querySelector('.burger'),n=document.querySelector('nav.main');
  if(b&&n){b.addEventListener('click',function(){n.classList.toggle('open');});}
- document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(document.activeElement&&document.activeElement.blur){document.activeElement.blur();}if(n){n.classList.remove('open');}}});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(document.activeElement&&document.activeElement.blur){document.activeElement.blur();}if(n){n.classList.remove('open');}document.querySelectorAll('.drop').forEach(function(d){d.classList.add('drop-off');});}});
+ document.querySelectorAll('.drop').forEach(function(d){var btn=d.querySelector('button');if(btn){btn.addEventListener('focus',function(){d.classList.remove('drop-off');});}d.addEventListener('mouseleave',function(){d.classList.remove('drop-off');});});
  var q=document.querySelector('select[name="service"]');
  if(q){var s=new URLSearchParams(location.search).get('service');if(s){for(var i=0;i<q.options.length;i++){if(q.options[i].value===s){q.selectedIndex=i;}}}}
  document.querySelectorAll('form.lead').forEach(function(f){
