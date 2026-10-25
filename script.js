@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded',function(){
  var b=document.querySelector('.burger'),n=document.querySelector('nav.main');
  if(b&&n){b.addEventListener('click',function(){n.classList.toggle('open');});}
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(document.activeElement&&document.activeElement.blur){document.activeElement.blur();}if(n){n.classList.remove('open');}}});
  var q=document.querySelector('select[name="service"]');
  if(q){var s=new URLSearchParams(location.search).get('service');if(s){for(var i=0;i<q.options.length;i++){if(q.options[i].value===s){q.selectedIndex=i;}}}}
  document.querySelectorAll('form.lead').forEach(function(f){
