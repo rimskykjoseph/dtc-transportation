@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded',function(){
  if(q){var s=new URLSearchParams(location.search).get('service');if(s){for(var i=0;i<q.options.length;i++){if(q.options[i].value===s){q.selectedIndex=i;}}}}
  document.querySelectorAll('form.lead').forEach(function(f){
   f.addEventListener('submit',function(e){e.preventDefault();
+   var btn=f.querySelector('button[type="submit"]');if(btn){btn.disabled=true;btn.textContent=(document.documentElement.lang==='fr')?'Envoi en cours…':'Sending…';}
    var msg=f.getAttribute('data-thanks')||'Thank you. Your request has been received.';
    var endpoint='https://formsubmit.app/f/pwqxpqjxgm';
    if(endpoint){
-     fetch(endpoint,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)}).then(function(r){if(r.ok){f.outerHTML='<div class="thanks"><strong>'+msg+'</strong></div>';}else{throw new Error('bad');}}).catch(function(){f.outerHTML='<div class="thanks"><strong>Sorry, something went wrong sending this. Please call 438-221-5661 or email chilvarymoving@yahoo.com directly.</strong></div>';});
+     fetch(endpoint,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)}).then(function(r){if(r.ok){window.location.href='thank-you.html';}else{throw new Error('bad');}}).catch(function(){var lang=document.documentElement.lang||'en';var err=(lang==='fr')?'Désolé, un problème est survenu lors de la transmission. Veuillez appeler le 438-221-5661 ou écrire à chilvarymoving@yahoo.com directement.':'Sorry, something went wrong sending this. Please call 438-221-5661 or email chilvarymoving@yahoo.com directly.';f.outerHTML='<div class="thanks"><strong>'+err+'</strong></div>';});
    } else {
      var lines=[];
      var els=f.querySelectorAll('input,select,textarea');
