@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded',function(){
  document.querySelectorAll('.drop>button').forEach(function(btn){btn.addEventListener('click',function(){if(window.matchMedia('(max-width:820px)').matches){var opened=btn.parentElement.classList.toggle('open');btn.setAttribute('aria-expanded',opened?'true':'false');}});});
  var q=document.querySelector('select[name="service"]');
  if(q){var s=new URLSearchParams(location.search).get('service');if(s){for(var i=0;i<q.options.length;i++){if(q.options[i].value===s){q.selectedIndex=i;}}}}
+ document.querySelectorAll('form.lead.multi').forEach(function(f){
+  var steps=f.querySelectorAll('.step'),prog=f.querySelectorAll('.steps li'),cur=0;
+  function show(i){cur=i;steps.forEach(function(s,j){s.classList.toggle('on',j===i);});prog.forEach(function(p,j){p.classList.toggle('cur',j===i);if(j===i){p.setAttribute('aria-current','step');}else{p.removeAttribute('aria-current');}});}
+  f.querySelectorAll('.next').forEach(function(b){b.addEventListener('click',function(){var req=steps[cur].querySelectorAll('[required]'),ok=true;for(var k=0;k<req.length;k++){if(!req[k].checkValidity()){req[k].reportValidity();ok=false;break;}}if(ok&&cur<steps.length-1){show(cur+1);}});});
+  f.querySelectorAll('.back').forEach(function(b){b.addEventListener('click',function(){if(cur>0){show(cur-1);}});});
+  show(0);
+ });
  document.querySelectorAll('form.lead').forEach(function(f){
   f.addEventListener('submit',function(e){e.preventDefault();
    var btn=f.querySelector('button[type="submit"]');if(btn){btn.disabled=true;btn.textContent=(document.documentElement.lang.indexOf('fr')===0)?'Envoi en cours…':'Sending…';}

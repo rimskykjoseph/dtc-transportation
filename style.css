@@ -31,5 +31,6 @@ footer{background:var(--navy);color:#cfe0f0}footer .wrap{padding-top:36px;paddin
 nav.main{flex-wrap:wrap}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.steps{display:flex;gap:8px;list-style:none;padding:0;margin:0 0 20px}.steps li{flex:1;text-align:center;padding:10px 6px;border-bottom:3px solid var(--line);font-weight:800;color:var(--muted);font-size:.95rem}.steps li.cur{color:var(--navy);border-color:var(--gold)}form.multi .step{display:none}form.multi .step.on{display:block}.stepnav{display:flex;justify-content:space-between;gap:12px;margin-top:16px}.noblig{font-weight:800;color:var(--navy);margin:0 0 16px}.privacy{font-size:.9rem;color:var(--muted)}
 .photo-slot{border:2px dashed var(--line);border-radius:8px;padding:28px 20px;text-align:center;color:var(--grey);font-weight:700;margin:20px 0}
 @media(max-width:820px){nav.main a{padding:12px 0}}
