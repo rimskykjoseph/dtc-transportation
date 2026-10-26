@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded',function(){
    var fullText=heroH1.textContent;
    heroH1.textContent='';
    if(heroCtas){heroCtas.classList.add('cta-wait');}
+   document.documentElement.classList.add('cta-slide');
    var ebSpan=null,fullEb='';
    if(heroEb){
      var ebSpans=heroEb.querySelectorAll('span');
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded',function(){
      (function step(){
        heroH1.textContent=fullText.slice(0,++ti);
        if(ti<fullText.length){setTimeout(step,60);}
-       else{heroH1.classList.remove('typing');if(heroCtas){heroCtas.classList.remove('cta-wait');}}
+       else{heroH1.classList.remove('typing');if(heroCtas){heroCtas.classList.remove('cta-wait');}document.documentElement.classList.remove('cta-slide');document.documentElement.classList.add('cta-in');}
      })();
    }
    setTimeout(function(){
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded',function(){
        })();
      } else { typeH1(); }
    },150);
- }
+ } else if(heroH1){document.documentElement.classList.add('cta-in');}
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){
