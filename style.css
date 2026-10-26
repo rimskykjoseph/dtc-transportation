@@ -135,5 +135,14 @@ body.rv-on .rv.in{opacity:1;transform:none}
 .home .hero-stripe::before{content:"";position:absolute;inset:0;background:var(--gold);clip-path:polygon(0 55%,100% 0,100% 100%,0 100%)}
 .home .hero-stripe::after{content:"";position:absolute;inset:0;background:#fff;clip-path:polygon(0 100%,100% 22%,100% 100%)}
 }
+/* mobile punch-list ?v=25: slimmer top, smaller hero text + button text (mobile homepages only) */
+@media(max-width:820px){
+.home .topbar a[href^="tel:"]{display:none}
+.home header.site .head{padding:4px 16px}
+.home header.site .logoimg{height:40px;width:40px}
+.home .hero h1{font-size:1.6rem}
+.home .hero-content .eyebrow{font-size:.75rem}
+.home .hero .ctas .btn{font-size:15px;padding:12px 16px}
+}
 
 
