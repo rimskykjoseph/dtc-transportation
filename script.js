@@ -12,6 +12,26 @@ document.addEventListener('DOMContentLoaded',function(){
  placePanel();
  if(mqMobile.addEventListener){mqMobile.addEventListener('change',placePanel);}
  else if(mqMobile.addListener){mqMobile.addListener(placePanel);}
+ var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(!reduceMotion){
+   document.body.classList.add('rv-on');
+   var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{threshold:.15});
+   document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
+ }
+ var heroH1=document.querySelector('.home .hero h1');
+ if(heroH1&&!reduceMotion){
+   var fullText=heroH1.textContent;
+   heroH1.textContent='';
+   heroH1.classList.add('typing');
+   var ti=0;
+   setTimeout(function(){
+     (function step(){
+       heroH1.textContent=fullText.slice(0,++ti);
+       if(ti<fullText.length){setTimeout(step,40);}
+       else{heroH1.classList.remove('typing');}
+     })();
+   },300);
+ }
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){
