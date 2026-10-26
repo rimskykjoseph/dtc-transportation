@@ -19,18 +19,38 @@ document.addEventListener('DOMContentLoaded',function(){
    document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
  }
  var heroH1=document.querySelector('.home .hero h1');
+ var heroEb=document.querySelector('.home .hero .eyebrow');
+ var heroCtas=document.querySelector('.home .hero .ctas');
  if(heroH1&&!reduceMotion){
    var fullText=heroH1.textContent;
    heroH1.textContent='';
-   heroH1.classList.add('typing');
-   var ti=0;
-   setTimeout(function(){
+   if(heroCtas){heroCtas.classList.add('cta-wait');}
+   var ebSpan=null,fullEb='';
+   if(heroEb){
+     var ebSpans=heroEb.querySelectorAll('span');
+     for(var si=0;si<ebSpans.length;si++){if(window.getComputedStyle(ebSpans[si]).display!=='none'){ebSpan=ebSpans[si];break;}}
+     if(!ebSpan&&ebSpans.length){ebSpan=ebSpans[0];}
+     if(ebSpan){fullEb=ebSpan.textContent;ebSpan.textContent='';ebSpan.classList.add('typing');}
+   }
+   function typeH1(){
+     heroH1.classList.add('typing');
+     var ti=0;
      (function step(){
        heroH1.textContent=fullText.slice(0,++ti);
-       if(ti<fullText.length){setTimeout(step,40);}
-       else{heroH1.classList.remove('typing');}
+       if(ti<fullText.length){setTimeout(step,60);}
+       else{heroH1.classList.remove('typing');if(heroCtas){heroCtas.classList.remove('cta-wait');}}
      })();
-   },300);
+   }
+   setTimeout(function(){
+     if(ebSpan&&fullEb){
+       var ei=0;
+       (function estep(){
+         ebSpan.textContent=fullEb.slice(0,++ei);
+         if(ei<fullEb.length){setTimeout(estep,14);}
+         else{ebSpan.classList.remove('typing');typeH1();}
+       })();
+     } else { typeH1(); }
+   },150);
  }
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;

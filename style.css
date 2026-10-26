@@ -112,11 +112,11 @@ body.rv-on .rv.in{opacity:1;transform:none}
 /* hero zoom on load */
 .home .hero .hero-media img{animation:heroZoom 2.4s ease forwards}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-/* typewriter caret + eyebrow fade */
-.home .hero-content .eyebrow{animation:ebFade .7s ease both}
-@keyframes ebFade{from{opacity:0}to{opacity:1}}
-.home .hero h1.typing::after{content:"";display:inline-block;width:3px;height:1em;background:#fff;margin-left:2px;vertical-align:-.1em;animation:blink .7s steps(1) infinite}
+/* typewriter ?v=27: eyebrow types first, then H1, then buttons fade in (caret throughout) */
+.home .hero .eyebrow span.typing::after,.home .hero h1.typing::after{content:"";display:inline-block;width:3px;height:1em;background:#fff;margin-left:2px;vertical-align:-.1em;animation:blink .7s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
+.home .hero .ctas{transition:opacity .6s ease}
+.home .hero .ctas.cta-wait{opacity:0}
 /* slanted hero buttons, desktop only */
 @media(min-width:821px){.home .hero .ctas .btn{transform:skewX(-12deg)}.home .hero .ctas .btn span{display:block;transform:skewX(12deg)}}
 @media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}}
