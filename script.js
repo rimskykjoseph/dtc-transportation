@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded',function(){
    var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{threshold:.15});
    document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
  }
- var heroH1=document.querySelector('.home .hero h1');
- if(heroH1&&!reduceMotion){document.documentElement.classList.add('hero-stagger');}
+ document.querySelectorAll('.service-card').forEach(function(card){card.addEventListener('click',function(e){if(e.target.closest('a')){return;}card.classList.toggle('swapped');});});
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){
