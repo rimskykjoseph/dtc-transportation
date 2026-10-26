@@ -1,5 +1,17 @@
 
 document.addEventListener('DOMContentLoaded',function(){
+ var panel0=document.querySelector('.quote-panel');
+ var heroWrap=document.querySelector('.home .hero .wrap');
+ var servicesSec=document.getElementById('services');
+ var mqMobile=window.matchMedia('(max-width:820px)');
+ function placePanel(){
+   if(!panel0||!heroWrap||!servicesSec){return;}
+   if(mqMobile.matches){servicesSec.after(panel0);document.body.classList.add('panel-below');}
+   else{heroWrap.appendChild(panel0);document.body.classList.remove('panel-below');}
+ }
+ placePanel();
+ if(mqMobile.addEventListener){mqMobile.addEventListener('change',placePanel);}
+ else if(mqMobile.addListener){mqMobile.addListener(placePanel);}
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){
