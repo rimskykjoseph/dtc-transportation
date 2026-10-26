@@ -99,6 +99,6 @@ form.f .invalid{border-color:#c0392b!important}
 .eb-full{display:none}
 .eb-short{display:inline}
 .quote-panel{margin-top:28px;scroll-margin-top:90px}
-body.panel-below .quote-panel{margin:28px 20px 0}
+body.panel-below .quote-panel{width:86%;margin:28px auto 0}
 }
 

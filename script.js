@@ -2,11 +2,11 @@
 document.addEventListener('DOMContentLoaded',function(){
  var panel0=document.querySelector('.quote-panel');
  var heroWrap=document.querySelector('.home .hero .wrap');
- var servicesSec=document.getElementById('services');
+ var heroSec=document.querySelector('.home .hero');
  var mqMobile=window.matchMedia('(max-width:820px)');
  function placePanel(){
-   if(!panel0||!heroWrap||!servicesSec){return;}
-   if(mqMobile.matches){servicesSec.after(panel0);document.body.classList.add('panel-below');}
+   if(!panel0||!heroWrap||!heroSec){return;}
+   if(mqMobile.matches){heroSec.after(panel0);document.body.classList.add('panel-below');}
    else{heroWrap.appendChild(panel0);document.body.classList.remove('panel-below');}
  }
  placePanel();
