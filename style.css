@@ -112,14 +112,14 @@ body.rv-on .rv.in{opacity:1;transform:none}
 /* hero zoom on load */
 .home .hero .hero-media img{animation:heroZoom 2.4s ease forwards}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-/* hero stagger cascade ?v=29 (REPLACES typewriter ?v=27 + mobile slide-in ?v=28): eyebrow 0.2s, H1 0.4s, CTAs 0.6s; snippet motion 0.8s cubic-bezier(0.16,1,0.3,1) fade-up. Gated on html.hero-stagger (JS-added) so no-JS shows the full hero. ?v=30: cascade plays regardless of Reduce Motion (MTL-style) — hero reduced-motion override replaced with a duration exception so the global reduced-motion rule cannot squash it; global rule itself untouched. */
+/* hero stagger cascade ?v=29 (REPLACES typewriter ?v=27 + mobile slide-in ?v=28): eyebrow 0.2s, H1 0.4s, CTAs 0.6s; snippet motion 0.8s cubic-bezier(0.16,1,0.3,1) fade-up. Gated on html.hero-stagger (JS-added) so no-JS shows the full hero. ?v=30: cascade plays regardless of Reduce Motion (MTL-style) — hero reduced-motion override replaced with a duration exception so the global reduced-motion rule cannot squash it; global rule itself untouched. ?v=31: DIAGNOSTIC REVERT of ?v=30 — hero cascade again respects Reduce Motion (?v=29 behavior); hero reduced-motion override restored. */
 @keyframes heroTextShift{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
 html.hero-stagger .home .hero-content .eyebrow{opacity:0;animation:heroTextShift .8s cubic-bezier(0.16,1,0.3,1) .2s forwards}
 html.hero-stagger .home .hero h1{opacity:0;animation:heroTextShift .8s cubic-bezier(0.16,1,0.3,1) .4s forwards}
 html.hero-stagger .home .hero .ctas{opacity:0;animation:heroTextShift .8s cubic-bezier(0.16,1,0.3,1) .6s forwards}
 /* slanted hero buttons, desktop only */
 @media(min-width:821px){.home .hero .ctas .btn{transform:skewX(-12deg)}.home .hero .ctas .btn span{display:block;transform:skewX(12deg)}}
-@media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}html.hero-stagger .home .hero-content .eyebrow,html.hero-stagger .home .hero h1,html.hero-stagger .home .hero .ctas{animation-duration:.8s!important}}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}html.hero-stagger .home .hero-content .eyebrow,html.hero-stagger .home .hero h1,html.hero-stagger .home .hero .ctas{animation:none!important;opacity:1!important;transform:none!important}}
 /* centered hero text (user-confirmed, like the draft) */
 .home .hero-content{text-align:center}
 @media(min-width:821px){.home .hero-content{margin:0 auto}.home .hero .ctas{justify-content:center}}
