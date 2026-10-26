@@ -1,4 +1,17 @@
 
+/* ?v=37: homepage header transparent over hero at top, solid navy on scroll (JS-gated: no-JS keeps today's solid header). Runs at script execution (header already parsed) so the overlay is in place before first paint where possible; height re-measured on load/resize for font/breakpoint changes. */
+(function(){
+ var head=document.querySelector('header.site');
+ if(!head||!document.body.classList.contains('home')){return;}
+ function setHeadH(){document.documentElement.style.setProperty('--head-h',head.offsetHeight+'px');}
+ function onScrollHead(){if(window.scrollY>10){head.classList.add('scrolled');}else{head.classList.remove('scrolled');}}
+ document.body.classList.add('head-trans');
+ setHeadH();
+ onScrollHead();
+ window.addEventListener('scroll',onScrollHead,{passive:true});
+ window.addEventListener('resize',setHeadH);
+ window.addEventListener('load',setHeadH);
+})();
 document.addEventListener('DOMContentLoaded',function(){
  var panel0=document.querySelector('.quote-panel');
  var heroWrap=document.querySelector('.home .hero .wrap');
@@ -19,6 +32,16 @@ document.addEventListener('DOMContentLoaded',function(){
    document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
  }
  document.querySelectorAll('.service-card').forEach(function(card){function press(){card.classList.add('pressed');}function release(){card.classList.remove('pressed');}card.addEventListener('touchstart',press,{passive:true});card.addEventListener('touchend',release);card.addEventListener('touchcancel',release);});
+ /* ?v=37: gold back-to-top button (site-wide; created by JS so no-JS shows no dead element; mobile bottom offset clears the sticky CALL/TEXT/QUOTE bar) */
+ var toTop=document.createElement('button');
+ toTop.className='to-top';
+ toTop.setAttribute('aria-label',(document.documentElement.lang||'en').indexOf('fr')===0?'Retour en haut':'Back to top');
+ toTop.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#10233F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l7-7 7 7"/></svg>';
+ document.body.appendChild(toTop);
+ function onScrollTop(){if(window.scrollY>400){toTop.classList.add('show');}else{toTop.classList.remove('show');}}
+ window.addEventListener('scroll',onScrollTop,{passive:true});
+ onScrollTop();
+ toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});});
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){
@@ -89,6 +112,25 @@ document.addEventListener('DOMContentLoaded',function(){
      });
    },{threshold:0.4});
    io.observe(el);
+ });
+ /* ?v=37: trust-strip count-up (numeric .tnum only — text cells like "Home & Business" skipped; plays regardless of Reduce Motion, per the typewriter decision; numbers stay static in markup for no-JS) */
+ document.querySelectorAll('.trust-strip .tnum').forEach(function(el){
+   var t=parseInt(el.textContent,10);
+   if(isNaN(t)){return;}
+   el.setAttribute('data-target',t);
+   el.textContent='0';
+   var tio=new IntersectionObserver(function(es){
+     es.forEach(function(e){
+       if(e.isIntersecting){
+         tio.disconnect();
+         var target=parseInt(el.getAttribute('data-target'),10);
+         var start=null;
+         function tick(ts){if(!start)start=ts;var p=Math.min((ts-start)/1200,1);var ease=1-Math.pow(1-p,3);el.textContent=Math.round(ease*target);if(p<1){requestAnimationFrame(tick);}}
+         requestAnimationFrame(tick);
+       }
+     });
+   },{threshold:.3});
+   tio.observe(el);
  });
  document.querySelectorAll('.drop').forEach(function(d){var btn=d.querySelector('button');if(btn){btn.addEventListener('focus',function(){d.classList.remove('drop-off');btn.setAttribute('aria-expanded','true');});btn.addEventListener('blur',function(){if(!d.classList.contains('open')){btn.setAttribute('aria-expanded','false');}});}d.addEventListener('mouseleave',function(){d.classList.remove('drop-off');});});
  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDrawer();}});

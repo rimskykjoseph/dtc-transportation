@@ -212,5 +212,23 @@ h1 .tw-caret{width:.45em}
 .service-card:hover .service-description{color:rgba(16,35,63,0.9)}
 .service-card:hover .card-arrow-btn{background-color:#ffffff;color:#10233F}
 }
+/* ?v=37: MTL scroll touches (user picked all three; adapted to DCT palette/words, no MTL content) — (1) trust-strip count-up (JS animates numeric .tnum only; text cells untouched); (2) gold back-to-top button (site-wide); (3) homepage header transparent over hero at top, solid navy on scroll (JS-gated via body.head-trans so no-JS keeps today's solid header; hero pulled under header by --head-h with wrap/panel compensation so content and panel stay put). Non-homepage headers untouched (rules scoped to body.home). */
+.to-top{position:fixed;right:20px;bottom:24px;z-index:70;width:48px;height:48px;border-radius:50%;background:var(--gold);border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);opacity:0;pointer-events:none;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.to-top.show{opacity:1;pointer-events:auto;visibility:visible}
+@media(max-width:820px){.to-top{bottom:84px}}
+body.home.head-trans header.site{background:transparent;transition:background-color .3s ease}
+body.home.head-trans header.site::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,23,41,.92) 0%,rgba(10,23,41,.72) 55%,rgba(10,23,41,.25) 100%);transition:opacity .3s ease}
+body.home.head-trans header.site.scrolled{background:var(--navy2)}
+body.home.head-trans header.site.scrolled::before{opacity:0}
+body.home.head-trans header.site .head{position:relative;z-index:1}
+body.home.head-trans .hero{margin-top:calc(-1 * var(--head-h,73px))}
+@media(min-width:821px){
+body.home.head-trans .hero .wrap{padding-top:calc(60px + var(--head-h,73px));min-height:calc(75vh - 100px + var(--head-h,73px))}
+body.home.head-trans .quote-panel{top:calc(60px + var(--head-h,73px))}
+}
+@media(max-width:820px){
+body.home.head-trans .hero{margin-top:calc(-1 * var(--head-h,49px))}
+body.home.head-trans .hero .wrap{padding-top:calc(44px + var(--head-h,49px))}
+}
 
 
