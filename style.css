@@ -85,10 +85,9 @@ form.f .invalid{border-color:#c0392b!important}
 .quote-panel .panel-more{color:var(--dark)}
 .eb-short{display:none}
 @media(min-width:821px){
-.home .hero .wrap{min-height:calc(100vh - 130px);padding-top:60px;padding-bottom:80px;justify-content:space-between;max-width:none;padding-left:max(20px,calc((100vw - 1100px)/2));padding-right:20px}
-.home .hero-media{display:flex;align-items:center;justify-content:center}
-.home .hero-media img{width:auto;height:auto;max-width:70%;max-height:65%;object-fit:contain}
-.quote-panel{max-height:calc(100dvh - 120px);display:flex;flex-direction:column}
+.home .hero .wrap{min-height:calc(75vh - 100px);padding-top:60px;padding-bottom:80px;justify-content:space-between;max-width:none;padding-left:40px;padding-right:20px}
+.home .hero-media img{object-position:50% 60%}
+.quote-panel{max-height:calc(75vh - 240px);display:flex;flex-direction:column}
 .quote-panel .panel-strip,.quote-panel .panel-more{flex:none}
 .quote-panel form.f{flex:1;overflow-y:auto;min-height:0}
 }
