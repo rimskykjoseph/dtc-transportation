@@ -168,5 +168,28 @@ body.home{overflow-x:hidden}
 .stickybar a.text{background:var(--navy2);color:#fff}
 .stickybar a.quote{background:var(--gold);color:var(--navy)}
 }
+/* homepage services cards ?v=32 (user-supplied snippet, verbatim except the two marked adaptations) */
+.services-section{padding:60px 20px;background-color:#f8f9fa}
+.services-section .container{max-width:1200px;margin:0 auto}
+.services-section .section-title{text-align:center;color:var(--navy)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.service-card{border-radius:16px;padding:32px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:all 0.3s cubic-bezier(0.25,0.8,0.25,1);box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,0,0,0.12)}
+.service-number{font-size:0.9rem;font-weight:700;opacity:0.7;display:block;margin-bottom:8px}
+.service-title{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.service-description{font-size:0.95rem;line-height:1.5;margin-bottom:24px}
+.card-arrow-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease,background-color 0.2s ease;align-self:flex-start}
+.service-card:hover .card-arrow-btn{transform:scale(1.1)}
+.service-card.red-card{background-color:#d32f2f;color:#ffffff}
+.service-card.red-card .service-description{color:rgba(255,255,255,0.9)}
+.service-card.red-card .card-arrow-btn{background-color:#ffffff;color:#d32f2f}
+.service-card.white-card{background-color:#ffffff;color:#111111;border:1px solid #e2e8f0}
+.service-card.white-card .service-description{color:#555555}
+.service-card.white-card .card-arrow-btn{background-color:#111111;color:#ffffff}
+/* ADAPTATION 1: base h3 color (navy) would otherwise beat inherited white on red cards */
+.service-card.red-card .service-title{color:#ffffff}
+.service-card.white-card .service-title{color:#111111}
+/* ADAPTATION 2: snippet grid min 300px overflows viewports under ~340px; collapse to 1 column there */
+@media(max-width:360px){.services-grid{grid-template-columns:1fr}}
 
 
