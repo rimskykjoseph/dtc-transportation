@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',function(){
    var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{threshold:.15});
    document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
  }
- document.querySelectorAll('.service-card').forEach(function(card){card.addEventListener('click',function(e){if(e.target.closest('a')){return;}card.classList.toggle('swapped');});});
+ document.querySelectorAll('.service-card').forEach(function(card){function press(){card.classList.add('pressed');}function release(){card.classList.remove('pressed');}card.addEventListener('touchstart',press,{passive:true});card.addEventListener('touchend',release);card.addEventListener('touchcancel',release);});
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){

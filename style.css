@@ -164,27 +164,23 @@ body.home{overflow-x:hidden}
 .stickybar a.text{background:var(--navy2);color:#fff}
 .stickybar a.quote{background:var(--gold);color:var(--navy)}
 }
-/* homepage services cards ?v=32 (user-supplied snippet) + ?v=33 (gold/white themes replace red/white; tap color-swap) */
+/* homepage services cards ?v=32 (user-supplied snippet) + ?v=33 (gold/white themes) + ?v=34 (white at rest; press -> gold slowly, release -> white slowly; nothing persists) */
 .services-section{padding:60px 20px;background-color:#f8f9fa}
 .services-section .container{max-width:1200px;margin:0 auto}
 .services-section .section-title{text-align:center;color:var(--navy)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1200px;margin:0 auto}
-.service-card{border-radius:16px;padding:32px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:all 0.3s cubic-bezier(0.25,0.8,0.25,1);box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+.service-card{border-radius:16px;padding:32px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:background-color 0.6s ease,color 0.6s ease,border-color 0.6s ease,transform 0.3s cubic-bezier(0.25,0.8,0.25,1),box-shadow 0.3s cubic-bezier(0.25,0.8,0.25,1);box-shadow:0 4px 12px rgba(0,0,0,0.05)}
 .service-card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,0,0,0.12)}
 .service-number{font-size:0.9rem;font-weight:700;opacity:0.7;display:block;margin-bottom:8px}
 .service-title{font-size:1.5rem;font-weight:700;margin-bottom:12px}
 .service-description{font-size:0.95rem;line-height:1.5;margin-bottom:24px}
-.card-arrow-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease,background-color 0.2s ease;align-self:flex-start}
+.card-arrow-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease,background-color 0.6s ease,color 0.6s ease;align-self:flex-start}
 .service-card:hover .card-arrow-btn{transform:scale(1.1)}
-.service-card.gold-card{background-color:#F4B942;color:#10233F;border:1px solid #F4B942}
-.service-card.gold-card .service-description{color:rgba(16,35,63,0.9)}
-.service-card.gold-card .card-arrow-btn{background-color:#ffffff;color:#10233F}
 .service-card.white-card{background-color:#ffffff;color:#111111;border:1px solid #e2e8f0}
 .service-card.white-card .service-description{color:#555555}
 .service-card.white-card .card-arrow-btn{background-color:#10233F;color:#ffffff}
-/* ?v=33: gold/white title colors (base h3 navy needs no exception on gold bg) */
-.service-card.gold-card .service-title{color:#10233F}
 .service-card.white-card .service-title{color:#111111}
+.service-card .service-title,.service-card .service-description{transition:color 0.6s ease}
 /* ADAPTATION 2: snippet grid min 300px overflows viewports under ~340px; collapse to 1 column there */
 @media(max-width:360px){.services-grid{grid-template-columns:1fr}}
 /* ?v=33: hero typewriter reveal (CTAs hidden under .tw until typing completes; mobile buttons slide in at button level) */
@@ -196,26 +192,17 @@ body.home{overflow-x:hidden}
 .tw-caret{display:inline-block;width:2px;height:1em;margin-left:2px;background:currentColor;vertical-align:-0.12em;animation:twBlink 1s step-end infinite}
 h1 .tw-caret{width:.45em}
 @keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
-/* ?v=33: services tap color-swap (gold <-> white, incl. text + arrow colors; lift hover kept) */
+/* ?v=34: services press/release color (white at rest; pressed/hovered -> gold slowly; release -> white slowly; nothing persists, no toggle) */
 .service-card{cursor:pointer}
-.service-card .card-arrow-btn{transition:transform 0.2s ease,background-color 0.3s ease,color 0.3s ease}
-.service-card.gold-card.swapped{background-color:#ffffff;color:#111111;border-color:#e2e8f0}
-.service-card.gold-card.swapped .service-title{color:#111111}
-.service-card.gold-card.swapped .service-description{color:#555555}
-.service-card.gold-card.swapped .card-arrow-btn{background-color:#10233F;color:#ffffff}
-.service-card.white-card.swapped{background-color:#F4B942;color:#10233F;border-color:#F4B942}
-.service-card.white-card.swapped .service-title{color:#10233F}
-.service-card.white-card.swapped .service-description{color:rgba(16,35,63,0.9)}
-.service-card.white-card.swapped .card-arrow-btn{background-color:#ffffff;color:#10233F}
+.service-card.pressed,.service-card:active{background-color:#F4B942;color:#10233F;border-color:#F4B942}
+.service-card.pressed .service-title,.service-card:active .service-title{color:#10233F}
+.service-card.pressed .service-description,.service-card:active .service-description{color:rgba(16,35,63,0.9)}
+.service-card.pressed .card-arrow-btn,.service-card:active .card-arrow-btn{background-color:#ffffff;color:#10233F}
 @media(hover:hover){
-.service-card.gold-card:hover{background-color:#ffffff;color:#111111;border-color:#e2e8f0}
-.service-card.gold-card:hover .service-title{color:#111111}
-.service-card.gold-card:hover .service-description{color:#555555}
-.service-card.gold-card:hover .card-arrow-btn{background-color:#10233F;color:#ffffff}
-.service-card.white-card:hover{background-color:#F4B942;color:#10233F;border-color:#F4B942}
-.service-card.white-card:hover .service-title{color:#10233F}
-.service-card.white-card:hover .service-description{color:rgba(16,35,63,0.9)}
-.service-card.white-card:hover .card-arrow-btn{background-color:#ffffff;color:#10233F}
+.service-card:hover{background-color:#F4B942;color:#10233F;border-color:#F4B942}
+.service-card:hover .service-title{color:#10233F}
+.service-card:hover .service-description{color:rgba(16,35,63,0.9)}
+.service-card:hover .card-arrow-btn{background-color:#ffffff;color:#10233F}
 }
 
 
