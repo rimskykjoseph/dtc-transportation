@@ -28,7 +28,7 @@ footer{background:var(--navy2);color:#cfe0f0}footer .wrap{padding-top:36px;paddi
  .stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60}.stickybar a{flex:1;text-align:center;padding:15px 0;color:#fff;text-decoration:none;font-weight:900}.stickybar a.call{background:var(--navy2)}.stickybar a.quote{background:var(--navy)}.stickybar a.text{background:var(--gold);color:var(--navy)}
  h1{font-size:1.7rem}body.home section h2{font-size:1.9rem}
 }
-nav.main{flex-wrap:wrap}
+@media(min-width:821px){nav.main{flex-wrap:nowrap;gap:8px}nav.main a{font-size:.88rem;letter-spacing:.01em}nav.main .drop>button{font-size:.88rem;letter-spacing:.01em}.head{max-width:1440px;gap:16px;padding:12px 16px}.brand{gap:10px}.logoimg{height:48px;width:48px}.logo{font-size:1.4rem}header.site .btn{padding:13px 16px 13px 24px}}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 body.home section h2{font-size:2.6rem}
@@ -45,7 +45,7 @@ section h2::after{content:"";display:block;width:48px;height:4px;background:var(
 form.f{background:#E9F2F9;padding:24px;border-radius:10px}
 form.multi fieldset{border:0;padding:0;margin:0}
 form.multi legend{font-size:1.15rem}
-.secure{text-align:center;font-weight:700;margin:20px 0 0;color:var(--navy)}
+.secure{text-align:center;font-weight:700;margin:20px 0 0;color:var(--navy2)}
 .terms{display:flex;gap:10px;align-items:flex-start;font-weight:700;margin:16px 0}
 .terms input{width:20px!important;height:20px;flex:none;margin-top:4px}
 .terms a{color:var(--navy)}
@@ -88,6 +88,9 @@ form.f .invalid{border-color:#c0392b!important}
 .home .hero .wrap{min-height:calc(100vh - 130px);padding-top:60px;padding-bottom:80px}
 .panel-reopen.show{display:inline-block;position:fixed;right:20px;bottom:20px;z-index:60}
 body.panel-closed .quote-panel{display:none}
+.quote-panel{max-height:calc(100dvh - 120px);display:flex;flex-direction:column}
+.quote-panel .panel-strip,.quote-panel .panel-title,.quote-panel .panel-more{flex:none}
+.quote-panel form.f{flex:1;overflow-y:auto;min-height:0}
 }
 @media(max-width:820px){
 .home .hero .wrap{display:block;padding-top:28px;padding-bottom:40px}
