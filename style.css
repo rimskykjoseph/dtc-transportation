@@ -100,4 +100,28 @@ form.f .invalid{border-color:#c0392b!important}
 .quote-panel{margin-top:28px;scroll-margin-top:90px}
 body.panel-below .quote-panel{width:86%;margin:28px auto 0}
 }
+/* trust strip */
+.trust-strip{background:var(--light);padding:30px 0}
+.trust-strip ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.trust-strip .tnum{display:block;font-size:1.9rem;font-weight:800;color:var(--navy);line-height:1.1}
+.trust-strip small{display:block;color:var(--grey);font-weight:700;font-size:.9rem;margin-top:2px}
+@media(max-width:820px){.trust-strip ul{grid-template-columns:1fr 1fr}}
+/* scroll reveal (gated on body.rv-on so content stays visible without JS) */
+body.rv-on .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+body.rv-on .rv.in{opacity:1;transform:none}
+/* hero zoom on load */
+.home .hero .hero-media img{animation:heroZoom 2.4s ease forwards}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+/* typewriter caret + eyebrow fade */
+.home .hero-content .eyebrow{animation:ebFade .7s ease both}
+@keyframes ebFade{from{opacity:0}to{opacity:1}}
+.home .hero h1.typing::after{content:"";display:inline-block;width:3px;height:1em;background:#fff;margin-left:2px;vertical-align:-.1em;animation:blink .7s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+/* slanted hero buttons, desktop only */
+@media(min-width:821px){.home .hero .ctas .btn{transform:skewX(-12deg)}.home .hero .ctas .btn span{display:block;transform:skewX(12deg)}}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}}
+/* centered hero text (user-confirmed, like the draft) */
+.home .hero-content{text-align:center}
+@media(min-width:821px){.home .hero-content{margin:0 auto}.home .hero .ctas{justify-content:center}}
+
 
