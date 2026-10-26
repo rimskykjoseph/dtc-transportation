@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded',function(){
    document.querySelectorAll('.rv').forEach(function(el){rio.observe(el);});
  }
  var heroH1=document.querySelector('.home .hero h1');
- if(heroH1&&!reduceMotion){document.documentElement.classList.add('hero-stagger');}
+ if(heroH1){document.documentElement.classList.add('hero-stagger');}
  var lang=document.documentElement.lang||'en';
  var isFr=lang.indexOf('fr')===0;
  function markErr(el,msg){
