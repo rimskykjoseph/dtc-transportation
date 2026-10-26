@@ -112,7 +112,7 @@ body.rv-on .rv.in{opacity:1;transform:none}
 /* hero zoom on load */
 .home .hero .hero-media img{animation:heroZoom 2.4s ease forwards}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-/* hero typewriter ?v=33 (restores ?v=27 typing + ?v=28 mobile button slide-in; replaces ?v=29 stagger cascade): inline script after hero markup types eyebrow (14ms/char) then H1 (30ms/char) with caret; CTAs hidden under .tw until typing completes. Plays regardless of Reduce Motion (MTL-style, per user decision). No-JS shows the full hero. */
+/* hero typewriter ?v=33 (restores ?v=27 typing + ?v=28 mobile button slide-in; replaces ?v=29 stagger cascade): inline script after hero markup types eyebrow (14ms/char) then H1 (15ms/char) with caret; CTAs hidden under .tw until typing completes. Plays regardless of Reduce Motion (MTL-style, per user decision). No-JS shows the full hero. */
 /* slanted hero buttons, desktop only */
 @media(min-width:821px){.home .hero .ctas .btn{transform:skewX(-12deg)}.home .hero .ctas .btn span{display:block;transform:skewX(12deg)}}
 @media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}}
