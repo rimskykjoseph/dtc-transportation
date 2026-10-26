@@ -112,14 +112,14 @@ body.rv-on .rv.in{opacity:1;transform:none}
 /* hero zoom on load */
 .home .hero .hero-media img{animation:heroZoom 2.4s ease forwards}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-/* typewriter ?v=27 + ?v=28 mobile slide-in: eyebrow types first, then H1, then buttons fade in on desktop / slide in on mobile (caret throughout) */
-.home .hero .eyebrow span.typing::after,.home .hero h1.typing::after{content:"";display:inline-block;width:3px;height:1em;background:#fff;margin-left:2px;vertical-align:-.1em;animation:blink .7s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.home .hero .ctas{transition:opacity .6s ease}
-.home .hero .ctas.cta-wait{opacity:0}
+/* hero stagger cascade ?v=29 (REPLACES typewriter ?v=27 + mobile slide-in ?v=28): eyebrow 0.2s, H1 0.4s, CTAs 0.6s; snippet motion 0.8s cubic-bezier(0.16,1,0.3,1) fade-up. Gated on html.hero-stagger (JS-added) so no-JS shows the full hero. */
+@keyframes heroTextShift{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+html.hero-stagger .home .hero-content .eyebrow{opacity:0;animation:heroTextShift .8s cubic-bezier(0.16,1,0.3,1) .2s forwards}
+html.hero-stagger .home .hero h1{opacity:0;animation:heroTextShift .8s cubic-bezier(0.16,1,0.3,1) .4s forwards}
+html.hero-stagger .home .hero .ctas{opacity:0;animation:heroTextShift .8s cubic-bezier(0.16,1,0.3,1) .6s forwards}
 /* slanted hero buttons, desktop only */
 @media(min-width:821px){.home .hero .ctas .btn{transform:skewX(-12deg)}.home .hero .ctas .btn span{display:block;transform:skewX(12deg)}}
-@media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1!important;transform:none!important}html.hero-stagger .home .hero-content .eyebrow,html.hero-stagger .home .hero h1,html.hero-stagger .home .hero .ctas{animation:none!important;opacity:1!important;transform:none!important}}
 /* centered hero text (user-confirmed, like the draft) */
 .home .hero-content{text-align:center}
 @media(min-width:821px){.home .hero-content{margin:0 auto}.home .hero .ctas{justify-content:center}}
@@ -154,7 +154,7 @@ body.home{overflow-x:hidden}
 .home .quote-panel{position:absolute;top:60px;right:20px;width:400px;max-height:none;min-height:calc(75vh - 60px)}
 .trust-strip{margin-top:120px}
 }
-/* mobile draft-look match ?v=28 (mobile only; desktop untouched): draft blue buttons/strip, card restyle, slide-in hero buttons, sticky bar gold slot on QUOTE */
+/* mobile draft-look match ?v=28 (mobile only; desktop untouched): draft blue buttons/strip, card restyle, sticky bar gold slot on QUOTE (hero slide-in rules removed in ?v=29 with the typewriter) */
 @media(max-width:820px){
 .btn.light{background:#1c46b8;color:#fff!important;border-color:#1c46b8}
 .trust-strip .tnum{color:#1c46b8}
@@ -165,8 +165,6 @@ body.home{overflow-x:hidden}
 #services .card .ic{width:46px;height:46px;border-radius:12px;background:#ebf2f8;display:grid;place-items:center;margin-bottom:14px}
 #services .card .ic svg{width:24px;height:24px;stroke:#1c46b8;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 #services .card a.more{color:#1c46b8;border-color:#1c46b8}
-html.cta-slide .home .hero .ctas .btn{opacity:0;transform:translateX(-120%) skewX(-12deg)}
-html.cta-in .home .hero .ctas .btn{opacity:1;transform:skewX(-12deg);transition:transform .7s ease,opacity .5s}
 .stickybar a.text{background:var(--navy2);color:#fff}
 .stickybar a.quote{background:var(--gold);color:var(--navy)}
 }
